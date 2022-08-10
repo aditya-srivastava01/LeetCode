@@ -22,7 +22,7 @@ class Solution {
         Collections.sort(set);
         for(int key : set){
             for(int i : map.get(key)){
-                System.out.print(i+" ");
+                // System.out.print(i+" ");
                 ans[pos] = i;
                 pos++;
                 k--;
@@ -34,8 +34,8 @@ class Solution {
                 break;
             }
         }
-        System.out.println();
-        System.out.println(map);
+        // System.out.println();
+        // System.out.println(map);
         return ans;
     }
 }
