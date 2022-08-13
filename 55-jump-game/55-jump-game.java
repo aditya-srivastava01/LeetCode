@@ -8,9 +8,6 @@ class Solution {
             if(nums[i]!=0){
                 max = Math.max(nums[i]+i,max);
             }else{
-                if(max>=nums.length-1){
-                    return true;
-                }
                 if(max>i){
                     for(int j=i;j<max;j++){
                         // System.out.print(nums[j]+ " ");
