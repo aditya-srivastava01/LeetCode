@@ -9,18 +9,19 @@ class Solution {
         if(len>n){
             return ans;
         }
-        StringBuilder slide = new StringBuilder(s.substring(0,len));
+        int k = 0;
+        String slide = str.substring(k,len);
         for(String word:words){
             map.putIfAbsent(word,0);
             map.put(word,map.get(word)+1);
         }
-        if(check(String.valueOf(slide),words[0].length())){
+        if(check(slide,words[0].length())){
             ans.add(0);
         }
         for(int i=len;i<n;i++){
-            slide.deleteCharAt(0);
-            slide.append(s.charAt(i));
-            if(check(String.valueOf(slide),words[0].length())){
+            k++;
+            slide = str.substring(k,len+k);
+            if(check(slide,words[0].length())){
                 ans.add(i-len+1);
             }
         }
