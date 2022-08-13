@@ -30,15 +30,17 @@ class Solution {
     public boolean check(String word,int len){
         String[] chunks = word.split("(?<=\\G.{" + len + "})");
         Hashtable<String,Integer> count = new Hashtable<>();
+        int rem = chunks.length;
         for(String s : chunks){
             count.putIfAbsent(s,0);
             count.put(s,count.get(s)+1);
             if(map.get(s)==null){
                 return false;
             }
-            if(count.get(s)>map.get(s)){
+            if(count.get(s)>map.get(s) || count.get(s)+rem<map.get(s)){
                 return false;
             }
+            rem--;
         }
         for(String s: chunks){
             if(!map.get(s).equals(count.get(s))){
