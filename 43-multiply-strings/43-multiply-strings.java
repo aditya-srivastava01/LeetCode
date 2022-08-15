@@ -16,6 +16,16 @@ class Solution {
             n = m;
             m = swap;
         }
+        if(n==1 || m==1){
+            if(num1.equals("0") || num2.equals("0")){
+                return "0";
+            }
+            if(num1.equals("1")){
+                return num2;
+            }if(num2.equals("1")){
+                return num1;
+            }
+        }
         Hashtable<Character,String> map = new Hashtable<>();
         char[] num = num1.toCharArray();
         char[] digits = {'0','1','2','3','4','5','6','7','8','9'};
