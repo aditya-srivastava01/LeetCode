@@ -28,6 +28,7 @@ class Solution {
         }
         if((root.left==null && root.right==null) &&(total+root.val==sum)){
             ans = true;
+            return;
         }
         total += root.val;
         inorder(root.left,sum,total);
