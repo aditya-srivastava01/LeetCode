@@ -10,15 +10,21 @@ class Solution {
         }
         n = dig.length;
         int t = 10;
+
         while(t>0){
+            boolean change = false;
             for(int i=0;i<n-1;i++){
                 if(dig[i]>dig[i+1]){
                     dig[i]--;
                     for(int j=i+1;j<n;j++){
                         dig[j]=9;
                     }
+                    change = true;
                     break;
                 }
+            }
+            if(!change){
+                break;
             }
             t--;
         }
