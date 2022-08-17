@@ -1,4 +1,6 @@
 class Solution {
+    int x = 0;
+    int val = 0;
     public String solveEquation(String equation) {
         String[] eq = equation.split("=");
         
@@ -64,118 +66,11 @@ class Solution {
             rhs[i] = r.get(i);
         }
 
-        int x = 0;
-        int val = 0;
 
-        for(i=0;i<lhs.length;i++){
-            if(lhs[i].equals("x")){
-                x++;
-            }
-            if('0'<=lhs[i].charAt(0) && lhs[i].charAt(0)<='9'){
-                if(i+1<lhs.length && lhs[i+1].equals("x")){
-                    x +=Integer.valueOf(lhs[i]);
-                    i++;
-                }
-                else{
-                    val += Integer.valueOf(lhs[i]);
-                }
-            }
-            if(lhs[i].equals("+")){
-                if(lhs[i+1].equals("x")){
-                    x++;
-                    i++;
-                }else{
-                    if(i+2<lhs.length){
-                        if(lhs[i+2].equals("x")){
-                            x += Integer.valueOf(lhs[i+1]);
-                            i+=2;
-                        }else{
-                            val += Integer.valueOf(lhs[i+1]);
-                            i++;
-                        }
-                    }else{
-                        val += Integer.valueOf(lhs[i+1]);
-                        i++;
-                    }
-                }
-            }
-            if(lhs[i].equals("-")){
-                if(lhs[i+1].equals("x")){
-                    x--;
-                    i++;
-                }else{
-                    if(i+2<lhs.length){
-                        if(lhs[i+2].equals("x")){
-                            x -= Integer.valueOf(lhs[i+1]);
-                            i+=2;
-                        }else{
-                            val -= Integer.valueOf(lhs[i+1]);
-                            i++;
-                        }
-                    }else{
-                        val -= Integer.valueOf(lhs[i+1]);
-                        i++;
-                    }
-                }
-            }
-        }
         // System.out.println(x+" "+val);
-        
-        for(i=0;i<rhs.length;i++){
-            if(rhs[i].equals("x")){
-                x--;
-            }
-            if('0'<=rhs[i].charAt(0) && rhs[i].charAt(0)<='9'){
-                if(i+1<rhs.length && rhs[i+1].equals("x")){
-                    x -= Integer.valueOf(rhs[i]);
-                    i++;
-                }
-                else{
-                    val -= Integer.valueOf(rhs[i]);
-                }
-            }
-            if(rhs[i].equals("-")){
-                // System.out.println("THYT");
-                if(rhs[i+1].equals("x")){
-                    x++;
-                    i++;
-                }else{
-                    if(i+2<rhs.length){
-                        // System.out.println("Yaha Potty"+" i "+rhs.length);
-                        if(rhs[i+2].equals("x")){
-                            x += Integer.valueOf(rhs[i+1]);
-                            i+=2;
-                        }else{
-                            val += Integer.valueOf(rhs[i+1]);
-                            i++;
-                        }
-                    }else{
-                        val +=Integer.valueOf(rhs[i+1]);
-                        i++;
-                    }
-                }
-            }
-            if(rhs[i].equals("+")){
-                if(rhs[i+1].equals("x")){
-                    x--;
-                    i++;
-                }else{
-                    if(i+2<rhs.length){
-                        if(rhs[i+2].equals("x")){
-                            x -= Integer.valueOf(rhs[i+1]);
-                            i+=2;
-                        }else{
-                            val -= Integer.valueOf(rhs[i+1]);
-                            i++;
-                        }
-                    }else{
-                        val -= Integer.valueOf(rhs[i+1]);
-                        i++;
-                    }
-                }
-            }
-        }
         // System.out.println(x+" "+val);
+        solve(lhs,1);
+        solve(rhs,2);
         String ans = "";
         val *= -1;
         if(x==0 && val!=0){
@@ -188,5 +83,80 @@ class Solution {
         }
         // System.out.println(x+" "+val);
         return ans;
+    }
+    public void solve(String[] arr,int type){
+        String plus = "+";
+        String minus = "-";
+        if(type==2){
+            plus = "-";
+            minus = "+";
+        }
+        int i = 0;
+        for(i=0;i<arr.length;i++){
+            if(arr[i].equals("x")){
+                if(type==2){
+                    x--;
+                }
+                else{
+                    x++;
+                }
+            }
+            if('0'<=arr[i].charAt(0) && arr[i].charAt(0)<='9'){
+                if(i+1<arr.length && arr[i+1].equals("x")){
+                    if(type==2){
+                        x -=Integer.valueOf(arr[i]);
+                    }else{
+                        x +=Integer.valueOf(arr[i]);
+                    }
+                    i++;
+                }
+                else{
+                    if(type==2){
+                        val -= Integer.valueOf(arr[i]);
+                    }else{
+                        val += Integer.valueOf(arr[i]);
+                    }
+                }
+            }
+            if(arr[i].equals(plus)){
+                if(arr[i+1].equals("x")){
+                    x++;
+                    i++;
+                }else{
+                    if(i+2<arr.length){
+                        if(arr[i+2].equals("x")){
+                            x += Integer.valueOf(arr[i+1]);
+                            i+=2;
+                        }else{
+                            val += Integer.valueOf(arr[i+1]);
+                            i++;
+                        }
+                    }else{
+                        val += Integer.valueOf(arr[i+1]);
+                        i++;
+                    }
+                }
+            }
+            if(arr[i].equals(minus)){
+                if(arr[i+1].equals("x")){
+                    x--;
+                    i++;
+                }else{
+                    if(i+2<arr.length){
+                        if(arr[i+2].equals("x")){
+                            x -= Integer.valueOf(arr[i+1]);
+                            i+=2;
+                        }else{
+                            val -= Integer.valueOf(arr[i+1]);
+                            i++;
+                        }
+                    }else{
+                        val -= Integer.valueOf(arr[i+1]);
+                        i++;
+                    }
+                }
+            }
+        }
+        // System.out.println(x+" "+val);
     }
 }
