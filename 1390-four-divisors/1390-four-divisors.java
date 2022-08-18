@@ -22,7 +22,7 @@ class Solution {
                     res += ans[nums[i]];
                 }
             }
-            System.out.println(nums[i]+" "+check(nums[i]));
+            // System.out.println(nums[i]+" "+check(nums[i]));
         }
         return res;
     }
