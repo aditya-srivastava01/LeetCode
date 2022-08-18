@@ -1,3 +1,4 @@
+import java.util.*;
 class Solution {
     public int minSetSize(int[] arr) {
         int max = 0;
@@ -10,13 +11,16 @@ class Solution {
         for(int i=0;i<n;i++){
             count[arr[i]]++;
         }
-        Arrays.sort(count);
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        int k = count.length;
         int ans = 0;
-        int k = count.length-1;
+        for(int i=0;i<k;i++){
+            pq.add(count[i]);
+        }
         while(n>req){
-            n -= count[k];
+            n -= pq.peek();
             ans++;
-            k--;
+            pq.remove(pq.peek());
         }    
         return ans;
     }
