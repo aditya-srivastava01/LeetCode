@@ -12,7 +12,7 @@ class Solution {
                 break;
             }
         }
-        return binarySearch(nums,0,pos,target)||binarySearch(nums,pos+1,n-1,target);
+        return binarySearch(nums,pos,n-1,target);
     }
     public boolean binarySearch(int arr[], int l, int r, int x){
         if (r >= l) {
