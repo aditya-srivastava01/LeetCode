@@ -15,18 +15,18 @@
  */
 import java.util.*;
 class Solution {
-    Hashtable<Integer,Integer> map = new Hashtable<>();
+    int[] count = new int[1001];
     int max = 1;
     public int deepestLeavesSum(TreeNode root) {
         inorder(root,1);
-        return map.get(max);
+        return count[max];
     }
     public void inorder(TreeNode root,int lvl){
         if(root==null){
             return;
         }
         max = Math.max(max,lvl);
-        map.put(lvl,map.getOrDefault(lvl,0)+root.val);
+        count[lvl] += root.val;
         inorder(root.left,lvl+1);
         inorder(root.right,lvl+1);
     }
