@@ -9,7 +9,6 @@ class Solution {
         }
         char[] digit = "0123456789".toCharArray();
         String front = "";
-        
         for(int i=9;i>=0;i--){
             if(dig[i]!=0){
                 if(dig[i]%2==1){
@@ -57,8 +56,7 @@ class Solution {
         if(front.length()==1){
             return front;
         }
-        // System.out.println(front);
-        char[] ans = new char[100000];
+        char[] ans = new char[front.length()*2];
         char[] f = front.toCharArray();
         int len = f.length;
         for(int i=0;i<len;i++){
@@ -73,18 +71,6 @@ class Solution {
             ans[len+k] = f[i];
             k++;
         }
-        // System.out.println("Length Char Array : "+ans.length);
-        // System.out.println("Length String ans : "+String.valueOf(ans).replace("\u0000", "").length());
         return String.valueOf(ans).replace("\u0000", "");
-        // if(front.length()%2==0){
-        //     for(int i=front.length()-2;i>=0;i--){
-        //         front += front.charAt(i);
-        //     }
-        // }else{
-        //     for(int i=front.length()-2;i>=0;i--){
-        //         front += front.charAt(i);
-        //     }
-        // }
-        // return front;
     }
 }
