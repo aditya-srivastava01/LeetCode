@@ -15,10 +15,11 @@
  */
 class Solution {
     char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    PriorityQueue<String> pq = new PriorityQueue<>();
+    List<String> pq = new ArrayList<>();
     public String smallestFromLeaf(TreeNode root) {
         inorder(root,"");
-        return pq.peek();
+        Collections.sort(pq);
+        return pq.get(0);
     }
     public void inorder(TreeNode root,String val){
         if(root==null){
