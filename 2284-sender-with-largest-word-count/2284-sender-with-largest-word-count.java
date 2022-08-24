@@ -10,7 +10,7 @@ class Solution {
             map.put(senders[i],map.getOrDefault(senders[i],0)+size);
             max = Math.max(max,map.get(senders[i]));
         }
-        System.out.println(map);
+        // System.out.println(map);
         PriorityQueue<String> ans = new PriorityQueue<>(Collections.reverseOrder());
         for(String word : map.keySet()){
             if(map.get(word)==max){
