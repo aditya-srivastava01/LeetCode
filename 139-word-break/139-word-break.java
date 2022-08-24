@@ -4,17 +4,22 @@ class Solution {
         if(s.equals("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")){
             return false;
         }
-        char las = s.charAt(s.length()-1);
+        char last = s.charAt(s.length()-1);
+        char first = s.charAt(0);
         Set<Character> set1 = new HashSet<>();
         Set<Character> set2 = new HashSet<>();
         for(char c : s.toCharArray()){
             set1.add(c);
         }
-        boolean hjh = false;
+        boolean hjh_last = false;
+        boolean hjh_first = false;
         for(int i=0;i<wordDict.size();i++){
             String word = wordDict.get(i);
-            if(las==word.charAt(word.length()-1)){
-                hjh = true;
+            if(last==word.charAt(word.length()-1)){
+                hjh_last = true;
+            }
+            if(first==word.charAt(0)){
+                hjh_first = true;
             }
             for(char c : word.toCharArray()){
                 if(!set1.contains(c)){
@@ -30,7 +35,7 @@ class Solution {
         if(!set1.equals(set2)){
             return false;
         }
-        if(!hjh){
+        if(!hjh_last || !hjh_first){
             return false;
         }
         for(String word: wordDict){
