@@ -1,7 +1,6 @@
 import java.util.*;
 class Solution {
     public int[] arrayChange(int[] nums, int[][] operations) {
-        Hashtable<Integer,Integer> map = new Hashtable<>();
         int[] arr = new int[1000001];
         for(int i=0;i<nums.length;i++){
             arr[nums[i]] = i;
