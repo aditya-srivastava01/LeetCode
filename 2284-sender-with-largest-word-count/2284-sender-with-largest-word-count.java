@@ -11,7 +11,7 @@ class Solution {
             max = Math.max(max,map.get(senders[i]));
         }
         System.out.println(map);
-        PriorityQueue<String> ans = new PriorityQueue<>((a,b)->b.compareTo(a));
+        PriorityQueue<String> ans = new PriorityQueue<>(Collections.reverseOrder());
         for(String word : map.keySet()){
             if(map.get(word)==max){
                 ans.add(word);
