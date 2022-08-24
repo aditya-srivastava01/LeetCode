@@ -6,8 +6,10 @@ class Solution {
             map.put(nums[i],i);
         }
         for(int[] ope:operations){
-            nums[map.get(ope[0])] = ope[1];
-            map.put(ope[1],map.get(ope[0]));
+            int indx = map.get(ope[0]);
+            map.remove(nums[indx]);
+            nums[indx] = ope[1];
+            map.put(ope[1],indx);
         }
         return nums;
     }
