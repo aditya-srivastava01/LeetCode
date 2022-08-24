@@ -1,19 +1,15 @@
 class Solution {
     public boolean isPowerOfThree(int n) {
-        if(n==1){
-            return true;
-        }
-        while(n>=3){
-            if(n%3!=0){
-                return false;
-            }else{
-                n /= 3;
-            }
-        }
-        if(n==1){
-            return true;
-        }else{
+        char num[] = Integer.toString(n,3).toCharArray();
+        if(num[0]!='1'){
             return false;
         }
+        System.out.println(Integer.toString(n,3));
+        for(int i=1;i<num.length;i++){
+            if(num[i]!='0'){
+                return false;
+            }
+        }
+        return true;
     }
 }
