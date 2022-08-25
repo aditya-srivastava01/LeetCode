@@ -10,12 +10,15 @@ class Solution {
             pq.add(pq.poll()+1);
             k--;
         }
-        BigInteger ans = new BigInteger("1");
-        BigInteger modulo = new BigInteger("1000000007");
+        // BigInteger ans = new BigInteger("1");
+        // BigInteger modulo = new BigInteger("1000000007");
+        long ans = 1;
+        int mod = 1000000007;
         for(int i : pq){
-            ans =  ans.multiply(BigInteger.valueOf(i));
-            ans = ans.mod(modulo);
+            ans *= i;
+            ans %= mod;
         }
-        return (ans.mod(modulo)).intValue();
+        return (int)ans;
+        // return (ans.mod(modulo)).intValue();
     }
 }
