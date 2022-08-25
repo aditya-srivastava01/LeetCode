@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 import java.util.*;
 class Solution {
     PriorityQueue<Integer> pq = new PriorityQueue<>();
@@ -10,15 +9,12 @@ class Solution {
             pq.add(pq.poll()+1);
             k--;
         }
-        // BigInteger ans = new BigInteger("1");
-        // BigInteger modulo = new BigInteger("1000000007");
         long ans = 1;
         int mod = 1000000007;
-        for(int i : pq){
-            ans *= i;
+        while(!pq.isEmpty()){
+            ans *= pq.poll();
             ans %= mod;
         }
         return (int)ans;
-        // return (ans.mod(modulo)).intValue();
     }
 }
