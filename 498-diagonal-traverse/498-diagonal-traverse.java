@@ -27,23 +27,31 @@ class Solution {
         return ans;
     }
     public void up(int i,int j,int n,int m,int[][] mat,int type){
-        List<Integer> temp = new ArrayList<>();
+        // List<Integer> temp = new ArrayList<>();
+        int[] temp = new int[i+1];
+        int x = 0;
         while(i>=0 && j<m){
             // System.out.print(mat[i][j]+" ");
             if(type==1){
                 ans[k] = mat[i][j];
                 k++;
             }else{
-                temp.add(mat[i][j]);
+                // temp.add(mat[i][j]);
+                temp[x] = mat[i][j];
+                x++;
             }
             i--;
             j++;
         }
-        if(temp.size()!=0){
-            for(int x=temp.size()-1;x>=0;x--){
-                ans[k] = temp.get(x);
-                k++;
-            }
+        // if(temp.size()!=0){
+        //     for(int x=temp.size()-1;x>=0;x--){
+        //         ans[k] = temp.get(x);
+        //         k++;
+        //     }
+        // }
+        for(x= x-1;x>=0;x--){
+            ans[k] = temp[x];
+            k++;
         }
     }
 }
