@@ -15,13 +15,11 @@ class Solution {
                 ans++;
             }
         }
-        char prev = arr[pos];
         int val = ans;
         for(int i=k;i<n;i++){
-            prev = arr[i-k];
-            if(!vow[prev-'a'] && vow[arr[i]-'a']){
+            if(!vow[arr[i-k]-'a'] && vow[arr[i]-'a']){
                 val++;
-            }if(vow[prev-'a'] && !vow[arr[i]-'a']){
+            }if(vow[arr[i-k]-'a'] && !vow[arr[i]-'a']){
                 val--;
             }
             ans = Math.max(ans,val);
