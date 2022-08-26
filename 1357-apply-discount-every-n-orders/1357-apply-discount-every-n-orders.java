@@ -3,12 +3,12 @@ class Cashier {
     int count = 0;
     int n = 0;
     int discount = 0;
-    Hashtable<Integer,Integer> map = new Hashtable<>();
+    Hashtable<Integer,Double> map = new Hashtable<>();
     public Cashier(int n, int discount, int[] products, int[] prices) {
         this.n = n;
         this.discount = discount;
         for(int i=0;i<products.length;i++){
-            map.put(products[i],prices[i]);
+            map.put(products[i],(double)prices[i]);
         }
     }
     
@@ -16,7 +16,7 @@ class Cashier {
         count++;
         double bill = 0;
         for(int i=0;i<product.length;i++){
-            bill += (double)map.get(product[i])*(double)amount[i];
+            bill += map.get(product[i])*(double)amount[i];
         }
         
         if(count%n==0){
