@@ -19,7 +19,11 @@ class Solution {
         if(map.get(ans)==null){
             return ans;
         }
-        for(int i=(int)Math.pow(2,n-1)-2;i<(int)Math.pow(2,n);i++){
+        int min = (int)Math.pow(2,n-1)-2;
+        int max = (int)Math.pow(2,n)-1;
+        int range = max - min + 1;
+        for(int x=0;x<100;x++){
+            int i = (int)(Math.random() * range) + min;
             ans = Integer.toBinaryString(i);
             arr = new char[n-ans.length()];
             Arrays.fill(arr,'0');
