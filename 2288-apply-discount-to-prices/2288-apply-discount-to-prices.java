@@ -17,7 +17,7 @@ class Solution {
                         // System.out.println(num*(100.0-discount)/100.0);
                         BigDecimal x = new BigDecimal(String.valueOf(num*(100.0-discount)/100.0));
                         String val = x.toString();
-                        System.out.println(val);
+                        // System.out.println(val);
                         String[] dec = val.split("\\.");
                         if(dec.length==1){
                             String decimal = "00";
