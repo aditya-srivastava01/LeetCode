@@ -13,13 +13,12 @@ class Solution {
         }
         int ans = 0;
         for(int j=0;j<n;j++){
-            String[] num = new String[n];
+            String num = "";
             for(int i=0;i<n;i++){
-                num[i] = "."+String.valueOf(grid[i][j]);
+                num += "."+String.valueOf(grid[i][j]);
             }
-            String number = String.join("",num);
-            if(row.get(number)!=null){
-                ans += row.get(number);
+            if(row.get(num)!=null){
+                ans += row.get(num);
             }
         }
         return ans;
