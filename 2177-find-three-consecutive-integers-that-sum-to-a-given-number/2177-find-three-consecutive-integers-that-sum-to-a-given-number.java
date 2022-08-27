@@ -3,8 +3,6 @@ class Solution {
         if(num%3l!=0){
             return new long[0];
         }
-        long n = num/3l-1;
-        long ans[] = {n,n+1l,n+2l};
-        return ans;
+        return new long[] {num/3l-1l, num/3l,num/3l+1l};
     }
 }
