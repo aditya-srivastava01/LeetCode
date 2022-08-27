@@ -5,20 +5,29 @@ class Solution {
         Hashtable<String,Integer> row = new Hashtable<>();
         for(int[] r:grid){
             String[] num = new String[n];
+            num[0] = "@";
             for(int i=0;i<n;i++){
-                num[i] = "."+String.valueOf(r[i]);
+                num[i] = String.valueOf(r[i]);
+                if(i==n/2 || i==n-1){
+                    num[i] = "&"+String.valueOf(r[i]);
+                }
             }
-            String number = String.join("",num);
+            String number = String.join("",num)+"#";
             row.put(number,row.getOrDefault(number,0)+1);
         }
         int ans = 0;
         for(int j=0;j<n;j++){
-            String num = "";
+            String[] num = new String[n];
+            num[0] = "@";
             for(int i=0;i<n;i++){
-                num += "."+String.valueOf(grid[i][j]);
+                num[i] = String.valueOf(grid[i][j]);
+                if(i==n/2 || i==n-1){
+                    num[i] = "&"+String.valueOf(grid[i][j]);
+                }
             }
-            if(row.get(num)!=null){
-                ans += row.get(num);
+            String number = String.join("",num)+"#";
+            if(row.get(number)!=null){
+                ans += row.get(number);
             }
         }
         return ans;
