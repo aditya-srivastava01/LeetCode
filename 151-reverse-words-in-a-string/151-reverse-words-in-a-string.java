@@ -8,7 +8,6 @@ class Solution {
                 list.add(str[i]);
             }    
         }
-        // Collections.reverse(list);
         return String.join(" ",list);
     }
 }
