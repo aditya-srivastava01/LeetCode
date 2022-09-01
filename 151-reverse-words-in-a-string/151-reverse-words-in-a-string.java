@@ -2,12 +2,12 @@ class Solution {
     public String reverseWords(String s) {
         String[] str = s.split(" ");
         int n = str.length;
-        List<String> list = new ArrayList<>();
+        String ans = "";
         for(int i=n-1;i>=0;i--){
             if(str[i].length()>0){    
-                list.add(str[i]);
+                ans += str[i]+" ";
             }    
         }
-        return String.join(" ",list);
+        return ans.substring(0,ans.length()-1);
     }
 }
