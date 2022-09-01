@@ -34,10 +34,6 @@ class Solution {
                 i = j-1;
             }
         }
-        // System.out.println(a+" "+b);
-        if(a==0 && b==0){
-            return false;
-        }
         return a>b;
     }
 }
