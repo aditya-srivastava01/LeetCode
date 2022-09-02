@@ -18,8 +18,6 @@ class Solution {
     List<Double> lvl_sum = new ArrayList<>();
     public List<Double> averageOfLevels(TreeNode root) {
         inorder(root,0);
-        // System.out.println(node_sum);
-        // System.out.println(lvl_sum);
         for(int i=0;i<lvl_sum.size();i++){
             lvl_sum.set(i,node_sum.get(i)/lvl_sum.get(i));
         }
