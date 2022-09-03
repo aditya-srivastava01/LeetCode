@@ -8,8 +8,18 @@ class Solution {
             sum += rolls[i];
         }
         int req = mean*(n+m)-sum;
-        Arrays.fill(ans,1);
-        req -= n;
+        if(req<n || req>n*6){
+            return new int[0];
+        }
+        int min = 1;
+        for(i=6;i>0;i--){
+            if(n*i<=req){
+                min = i;
+                break;
+            }
+        }
+        Arrays.fill(ans,min);
+        req -= n*min;
         int cnt = 0;
         int prev = 0;
         while(req!=0){
