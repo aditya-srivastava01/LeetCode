@@ -1,22 +1,22 @@
 import java.util.*;
 class Solution {
     List<List<Integer>> ans = new ArrayList<>();
-    Hashtable<Integer,Hashtable<Integer,List<Integer>>> map = new Hashtable<>();
-    List<Integer> col = new ArrayList<>();
+    Hashtable<Integer,Hashtable<Integer,PriorityQueue<Integer>>> map = new Hashtable<>();
+    PriorityQueue<Integer> col = new PriorityQueue<>();
+    
     public List<List<Integer>> verticalTraversal(TreeNode root) {
         inorder(root,0,0);
-        Collections.sort(col);
-        for(int i:col){
+        while(!col.isEmpty()){
+            int i = col.poll();
             List<Integer> temp = new ArrayList<>();
-            Hashtable<Integer,List<Integer>> mp = map.get(i);
+            Hashtable<Integer,PriorityQueue<Integer>> mp = map.get(i);
             Enumeration<Integer> keys = mp.keys();
             List<Integer> list = Collections.list(keys);
             Collections.sort(list);
             for(int x:list){
-                List<Integer> lis =mp.get(x);
-                Collections.sort(lis);
-                for(int y:lis){
-                    temp.add(y);
+                PriorityQueue<Integer> pq =mp.get(x);
+                while(!pq.isEmpty()){
+                    temp.add(pq.poll());
                 }
             }
             ans.add(temp);
@@ -28,22 +28,22 @@ class Solution {
             return;
         } 
         if(map.get(x)!=null){
-            Hashtable<Integer,List<Integer>> mp = map.get(x);
+            Hashtable<Integer,PriorityQueue<Integer>> mp = map.get(x);
             if(mp.get(y)!=null){
-                List<Integer> list = mp.get(y);
+                PriorityQueue<Integer> list = mp.get(y);
                 list.add(root.val);
                 mp.put(y,list);
                 map.put(x,mp);
             }else{
-                List<Integer> list = new ArrayList<>();
+                PriorityQueue<Integer> list = new PriorityQueue<>();
                 list.add(root.val);
                 mp.put(y,list);
                 map.put(x,mp);               
             } 
         }
         else{
-            Hashtable<Integer,List<Integer>> mp = new Hashtable<>();
-            List<Integer> list = new ArrayList<>();
+            Hashtable<Integer,PriorityQueue<Integer>> mp = new Hashtable<>();
+            PriorityQueue<Integer> list = new PriorityQueue<>();
             list.add(root.val);
             mp.put(y,list);
             map.put(x,mp);               
