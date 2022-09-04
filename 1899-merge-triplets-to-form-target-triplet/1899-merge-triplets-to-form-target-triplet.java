@@ -11,6 +11,9 @@ class Solution {
                 ans[1] = Math.max(ans[1],y);
                 ans[2] = Math.max(ans[2],z);
             }
+            if(ans[0]==target[0] && ans[1]==target[1] && ans[2]==target[2]){
+                return true;
+            }
             x = tri[n-i-1][0];
             y = tri[n-i-1][1];
             z = tri[n-i-1][2];
