@@ -11,13 +11,6 @@ class Solution {
                 return true;
             }
         }
-        // for(int i:ans){
-        //     System.out.print(i+" ");
-        // }
-        // System.out.println();
-        if(ans[0]==target[0] && ans[1]==target[1] && ans[2]==target[2]){
-            return true;
-        }
         return false;
     }
 }
