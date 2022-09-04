@@ -1,18 +1,3 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
 import java.util.*;
 class Solution {
     List<List<Integer>> ans = new ArrayList<>();
@@ -38,12 +23,10 @@ class Solution {
         }
         return ans;
     }
-    
     public void inorder(TreeNode root,int x,int y){
         if(root==null){
             return;
-        }
-        
+        } 
         if(map.get(x)!=null){
             Hashtable<Integer,List<Integer>> mp = map.get(x);
             if(mp.get(y)!=null){
@@ -56,23 +39,14 @@ class Solution {
                 list.add(root.val);
                 mp.put(y,list);
                 map.put(x,mp);               
-            }
-            
+            } 
         }
         else{
             Hashtable<Integer,List<Integer>> mp = new Hashtable<>();
-            if(mp.get(y)!=null){
-                List<Integer> list = mp.get(y);
-                list.add(root.val);
-                mp.put(y,list);
-                map.put(x,mp);
-            }else{
-                List<Integer> list = new ArrayList<>();
-                list.add(root.val);
-                mp.put(y,list);
-                map.put(x,mp);               
-            }
-            
+            List<Integer> list = new ArrayList<>();
+            list.add(root.val);
+            mp.put(y,list);
+            map.put(x,mp);               
         }
         if(!col.contains(x)){
             col.add(x);
