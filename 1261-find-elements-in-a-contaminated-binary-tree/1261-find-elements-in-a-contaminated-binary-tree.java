@@ -19,9 +19,6 @@ class FindElements {
     Hashtable<Integer,Boolean> map = new Hashtable<>();
     public FindElements(TreeNode root) {
         this.root = root;
-        if(root!=null){
-            root.val = 0;
-        }
         inorder(root,0);
         // System.out.println(map);
     }
