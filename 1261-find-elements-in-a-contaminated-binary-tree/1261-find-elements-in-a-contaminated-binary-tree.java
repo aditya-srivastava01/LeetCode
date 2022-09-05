@@ -22,21 +22,16 @@ class FindElements {
         if(root!=null){
             root.val = 0;
         }
-        inorder(root);
+        inorder(root,0);
+        // System.out.println(map);
     }
-    public void inorder(TreeNode root){
+    public void inorder(TreeNode root,int val){
         if(root==null){
             return;
         }
-        map.put(root.val,true);
-        if(root.left!=null){
-            root.left.val = 2*root.val+1;
-        }
-        if(root.right!=null){
-            root.right.val = 2*root.val+2;
-        }
-        inorder(root.left);
-        inorder(root.right);
+        map.put(val,true);
+        inorder(root.left,val*2+1);
+        inorder(root.right,val*2+2);
     }
     public boolean find(int target) {
         return map.get(target)!=null;
