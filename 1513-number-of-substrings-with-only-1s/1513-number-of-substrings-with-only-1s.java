@@ -13,10 +13,8 @@ class Solution {
                 ans += cnt;
             }else{
                 ans += map.get(s[i]);
-            }
-            
+            }  
         }
-        
         return (int)(ans%1000000007l);
     }
 }
