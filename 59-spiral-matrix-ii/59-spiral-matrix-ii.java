@@ -1,6 +1,5 @@
 class Solution {
     int num = 1;
-    List<Integer> ans = new ArrayList<>();
     int left = 0;
     int right = 0;
     int up = 0;
