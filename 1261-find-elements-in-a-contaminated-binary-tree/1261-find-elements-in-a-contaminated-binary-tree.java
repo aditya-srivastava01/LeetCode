@@ -13,25 +13,25 @@
  *     }
  * }
  */
-import java.util.*;
 class FindElements {
     TreeNode root;
-    Hashtable<Integer,Boolean> map = new Hashtable<>();
+    boolean[] exsist = new boolean[1000001];
     public FindElements(TreeNode root) {
         this.root = root;
+        // System.out.println(exsist[0]);
         inorder(root,0);
-        // System.out.println(map);
     }
     public void inorder(TreeNode root,int val){
         if(root==null){
             return;
+        }if(0<=val && val<=1000000){
+            exsist[val] = true;
         }
-        map.put(val,true);
         inorder(root.left,val*2+1);
         inorder(root.right,val*2+2);
     }
     public boolean find(int target) {
-        return map.get(target)!=null;
+        return exsist[target];
     }
 }
 
