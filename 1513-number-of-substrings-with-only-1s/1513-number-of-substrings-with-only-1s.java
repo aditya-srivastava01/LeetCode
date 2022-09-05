@@ -12,15 +12,4 @@ class Solution {
         
         return (int)(ans%1000000007l);
     }
-    
-    public int cnt(String txt,String pat,int n,int k){
-        int count =0;
-        for(int i=0;i<=n-k;i++){
-            if(txt.substring(i,i+k).equals(pat)){
-                count++;
-            }
-        }
-        // map.put(txt,map.getOrDefault(txt,0)+count);
-        return count;
-    }
 }
