@@ -1,12 +1,12 @@
 import java.util.*;
 class Solution {
     public String mostCommonWord(String str, String[] banned) {
-        str = str.replace("!","");
-        str = str.replace("?","");
-        str = str.replace("'","");
+        str = str.replace("!"," ");
+        str = str.replace("?"," ");
+        str = str.replace("'"," ");
         str = str.replace(","," ");
-        str = str.replace(";","");
-        str = str.replace(".","");
+        str = str.replace(";"," ");
+        str = str.replace("."," ");
         str = str.toLowerCase();
         String[] s = str.split(" ");
         Hashtable<String,Integer> map = new Hashtable<>();
