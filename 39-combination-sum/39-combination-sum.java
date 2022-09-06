@@ -5,10 +5,12 @@ class Solution {
     Hashtable<List<Integer>,Boolean> map = new Hashtable<>();
     public List<List<Integer>> combinationSum(int[] arr, int target) {
         this.arr = arr;
-        for(int i=0;i<arr.length;i++){
-            List<Integer> list = new ArrayList<>();
-            find(i,target,list);
-        }
+        // for(int i=0;i<arr.length;i++){
+        //     List<Integer> list = new ArrayList<>();
+        //     find(i,target,list);
+        // }
+        List<Integer> list = new ArrayList<>();
+        find(0,target,list);
         return ans;
     }
     public void find(int indx,int x,List<Integer> list){
