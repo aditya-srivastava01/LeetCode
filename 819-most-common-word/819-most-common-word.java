@@ -8,6 +8,7 @@ class Solution {
         str = str.replace(";"," ");
         str = str.replace("."," ");
         str = str.toLowerCase();
+        str = str.replace("  "," ");
         String[] s = str.split(" ");
         Hashtable<String,Integer> map = new Hashtable<>();
         for(int i=0;i<s.length;i++){
@@ -19,7 +20,7 @@ class Solution {
         String ans = "";
         int count = 0;
         for(String word : map.keySet()){
-            if(word.length()>0 && map.get(word)>count){
+            if(map.get(word)>count){
                 count = map.get(word);
                 ans = word;
                 // System.out.println(word+" : "+map.get(word));
