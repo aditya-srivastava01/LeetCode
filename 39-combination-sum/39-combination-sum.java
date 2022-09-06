@@ -5,10 +5,6 @@ class Solution {
     Hashtable<List<Integer>,Boolean> map = new Hashtable<>();
     public List<List<Integer>> combinationSum(int[] arr, int target) {
         this.arr = arr;
-        // for(int i=0;i<arr.length;i++){
-        //     List<Integer> list = new ArrayList<>();
-        //     find(i,target,list);
-        // }
         List<Integer> list = new ArrayList<>();
         find(0,target,list);
         return ans;
@@ -19,7 +15,8 @@ class Solution {
                 Collections.sort(list);
                 if(map.get(list)==null){
                     ans.add(list);
-                    map.put(list,true);                    
+                    map.put(list,true);    
+                    return;
                 }
             }
             List<Integer> temp = new ArrayList<>(list);
