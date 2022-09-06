@@ -13,11 +13,13 @@ class Solution {
         if(indx<arr.length && x>=0){
             if(x==0){
                 Collections.sort(list);
-                if(map.get(list)==null){
-                    ans.add(list);
-                    map.put(list,true);    
-                    return;
-                }
+                // if(map.get(list)==null){
+                //     ans.add(list);
+                //     map.put(list,true);    
+                //     return;
+                // }
+                ans.add(list);
+                return;
             }
             List<Integer> temp = new ArrayList<>(list);
             temp.add(arr[indx]);
