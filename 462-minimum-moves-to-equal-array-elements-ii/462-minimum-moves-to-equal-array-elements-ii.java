@@ -4,19 +4,11 @@ class Solution {
         int n = nums.length;
         Arrays.sort(nums);
         int ans = 0;
-        if(n%2==1){
-            for(int i=0;i<n;i++){
-                if(i!=n/2){
-                    ans += Math.abs(nums[n/2]-nums[i]);
-                }
+        for(int i=0;i<n;i++){
+            if(i!=n/2){
+                ans += Math.abs(nums[n/2]-nums[i]);
             }
-        }else{
-            for(int i=0;i<n;i++){
-                if(i!=n/2){
-                    ans += Math.abs(nums[n/2]-nums[i]);
-                }
-            }            
-        }
+        }   
         return ans;
     }
 }
