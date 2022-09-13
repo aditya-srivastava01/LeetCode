@@ -1,6 +1,7 @@
 import java.util.*;
 class MinStack {
     Stack<Integer> stack = new Stack<>();
+    int min = Integer.MAX_VALUE;
     PriorityQueue<Integer> pq = new PriorityQueue<>();
     public MinStack() {
         
