@@ -21,7 +21,9 @@ class Solution {
         }
         List<Integer> zero = new ArrayList<>();
         List<Integer> one = new ArrayList<>();
-        for(int i : map.keySet()){
+        List<Integer> list = new ArrayList<>(map.keySet());
+        Collections.sort(list);
+        for(int i : list){
             int[] res = map.get(i);
             if(res[1]==0){
                 zero.add(i);
@@ -30,8 +32,8 @@ class Solution {
                 one.add(i);
             }
         }
-        Collections.sort(one);
-        Collections.sort(zero);
+        // Collections.sort(one);
+        // Collections.sort(zero);
         ans.add(zero);
         ans.add(one);
         return ans;
