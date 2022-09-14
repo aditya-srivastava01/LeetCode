@@ -32,8 +32,6 @@ class Solution {
                 one.add(i);
             }
         }
-        // Collections.sort(one);
-        // Collections.sort(zero);
         ans.add(zero);
         ans.add(one);
         return ans;
