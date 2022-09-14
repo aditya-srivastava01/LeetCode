@@ -4,7 +4,9 @@ class Solution {
         int n = nums.size();
         int len = 0;
         for(int i=0;i<n;i++){
-            for(int j=0;j<nums.get(i).size();j++){
+            int size = nums.get(i).size();
+            len += size;
+            for(int j=0;j<size;j++){
                 if(i+j>=ans.size()){
                     List<Integer> list = new ArrayList<>();
                     list.add(nums.get(i).get(j));
@@ -14,10 +16,9 @@ class Solution {
                     list.add(0,nums.get(i).get(j));
                     ans.set(i+j,list);
                 }
-                len++;
+                // len++;
             }
         }
-        // System.out.println(len+"  :   "+ans);
         int[] res = new int[len];
         int i = 0;
         for(List<Integer> list : ans){
