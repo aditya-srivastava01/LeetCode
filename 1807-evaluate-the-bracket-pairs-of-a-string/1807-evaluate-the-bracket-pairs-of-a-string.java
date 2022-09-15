@@ -11,16 +11,16 @@ class Solution {
         int indx = 0;
         for(int i=0;i<str.length;i++){
             if(str[i]=='('){
-                String key = "";
+                StringBuilder key = new StringBuilder();
                 for(int j=i+1;j<str.length;j++){
                     if(str[j]==')'){
-                        if(map.get(key)==null){
+                        if(map.get(key.toString())==null){
                             ans.append(new StringBuilder("?"));
                             // ans += "?";
                             // ans.add("?");
                             // ans[indx] = '?';indx++;
                         }else{
-                            ans.append(new StringBuilder(map.get(key)));
+                            ans.append(new StringBuilder(map.get(key.toString())));
                             // ans += map.get(key);
                             // for(char c : map.get(key).toCharArray()){
                             //     // ans[indx] = c; indx++;
@@ -30,7 +30,7 @@ class Solution {
                         i=j;
                         break;
                     }
-                    key += str[j];
+                    key.append(new StringBuilder(""+str[j]));
                 }
                 
             }else{
