@@ -6,15 +6,15 @@ class Solution {
             return new int[0];
         }
         Arrays.sort(changed);
-        Hashtable<Integer, PriorityQueue<Integer>> map = new Hashtable<>();
+        Hashtable<Integer, List<Integer>> map = new Hashtable<>();
         for(int i=0;i<n;i++){
             if(map.get(changed[i])==null){
-                PriorityQueue<Integer> pq = new PriorityQueue<>();
+                List<Integer> pq = new ArrayList<>();
                 pq.add(i);
                 map.put(changed[i],pq);
             }
             else{
-                PriorityQueue<Integer> pq = map.get(changed[i]);
+                List<Integer> pq = map.get(changed[i]);
                 pq.add(i);
                 map.put(changed[i],pq);
             }
@@ -26,11 +26,11 @@ class Solution {
             if(x!=-1){
                 if(map.containsKey(2*x) && map.get(2*x).size()>0){
                     if(x==0){
-                        PriorityQueue<Integer> pq = map.get(2*x);
+                        List<Integer> pq = map.get(2*x);
                         if(pq.size()>1){
                             ans[indx] = x;
-                            pq.poll();
-                            changed[pq.poll()] =-1;
+                            pq.remove(0);
+                            changed[pq.remove(0)] =-1;
                             map.put(x,pq);
                         }else{
                             return new int[0];
@@ -38,8 +38,8 @@ class Solution {
                     }
                     else{
                         ans[indx] = x;
-                        PriorityQueue<Integer> pq = map.get(2*x);
-                        changed[pq.poll()] = -1;
+                        List<Integer> pq = map.get(2*x);
+                        changed[pq.remove(0)] = -1;
                         if(pq.size()==0){
                             map.remove(2*x);
                         }else{
