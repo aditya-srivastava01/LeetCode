@@ -5,7 +5,9 @@ class Solution {
             map.put("("+know.get(i).get(0)+")",know.get(i).get(1));
         }
         char[] str = s.toCharArray();
-        List<Character> ans = new ArrayList<>();
+        // List<Character> ans = new ArrayList<>();
+        char[] ans = new char[2*1_0_0_0_0_0];
+        int indx = 0;
         for(int i=0;i<str.length;i++){
             if(str[i]=='('){
                 String key = "";
@@ -13,10 +15,14 @@ class Solution {
                     if(str[j]==')'){
                         key += ')';
                         if(map.get(key)==null){
-                            ans.add('?');
+                            // ans.add('?');
+                            ans[indx] = '?';
+                            indx++;
                         }else{
                             for(char c : map.get(key).toCharArray()){
-                                ans.add(c);
+                                ans[indx] = c;
+                                // ans.add(c);
+                                indx++;
                             }
                         }
                         i=j;
@@ -26,15 +32,17 @@ class Solution {
                 }
                 
             }else{
-                ans.add(str[i]);
+                ans[indx] = str[i];
+                indx++;
+                // ans.add(str[i]);
             }
         }
         // System.out.println(ans);
-        char[] res = new char[ans.size()];
-        for(int i=0;i<ans.size();i++){
-            res[i] = ans.get(i);
-        }
+        // char[] res = new char[ans.size()];
+        // for(int i=0;i<ans.size();i++){
+        //     res[i] = ans.get(i);
+        // }
         
-        return String.valueOf(res);
+        return String.valueOf(ans).substring(0,indx);
     }
 }
