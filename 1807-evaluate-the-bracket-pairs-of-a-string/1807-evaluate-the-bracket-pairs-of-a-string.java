@@ -5,8 +5,9 @@ class Solution {
             map.put(know.get(i).get(0),know.get(i).get(1));
         }
         char[] str = s.toCharArray();
-        List<String> ans = new ArrayList<>();
+        // List<String> ans = new ArrayList<>();
         // char[] ans = new char[10*s.length()];
+        String ans = "";
         int indx = 0;
         for(int i=0;i<str.length;i++){
             if(str[i]=='('){
@@ -14,14 +15,15 @@ class Solution {
                 for(int j=i+1;j<str.length;j++){
                     if(str[j]==')'){
                         if(map.get(key)==null){
-                            ans.add("?");
+                            ans += "?";
+                            // ans.add("?");
                             // ans[indx] = '?';indx++;
                         }else{
-                            for(char c : map.get(key).toCharArray()){
-                                // ans[indx] = c; indx++;
-                                ans.add(""+c);
-                               
-                            }
+                            ans += map.get(key);
+                            // for(char c : map.get(key).toCharArray()){
+                            //     // ans[indx] = c; indx++;
+                            //     // ans.add(""+c);
+                            // }
                         }
                         i=j;
                         break;
@@ -31,10 +33,11 @@ class Solution {
                 
             }else{
                 // ans[indx] = str[i];indx++;
-                ans.add(""+str[i]);
+                // ans.add(""+str[i]);
+                ans += str[i];
             }
         }
         // char[] res = Arrays.copyOf(ans,indx);
-        return String.join("",ans);
+        return ans;
     }
 }
