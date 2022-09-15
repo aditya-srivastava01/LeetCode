@@ -41,6 +41,6 @@ class Solution {
             }
         }
         // char[] res = Arrays.copyOf(ans,indx);
-        return String.valueOf(ans);
+        return ans.toString();
     }
 }
