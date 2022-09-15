@@ -42,7 +42,7 @@ class Solution {
         // for(int i=0;i<ans.size();i++){
         //     res[i] = ans.get(i);
         // }
-        
-        return String.valueOf(ans).substring(0,indx);
+        char[] res = Arrays.copyOf(ans,indx);
+        return String.valueOf(res);
     }
 }
