@@ -13,31 +13,25 @@ class Solution {
         if(head==null){
             return head;
         }
-        List<Integer> odd = new ArrayList<>();
-        List<Integer> even = new ArrayList<>();
-        // int first = head.val%2;
-        int indx = 1;
-        while(head!=null){
-            int val = head.val;
-            if(indx%2==0){
-                even.add(val);
-            }else{
-                odd.add(val);
-            }
-            head = head.next;
-            indx++;
-        }
-        
         ListNode ans = new ListNode();
         ListNode temp = ans;
-        for(int i : odd){
-            temp.next = new ListNode(i);
+        ListNode copy = head.next;
+        while(head!=null){
+            temp.next = new ListNode(head.val);
             temp = temp.next;
+            if(head.next==null){
+                break;
+            }
+            head = head.next.next;
         }
-        for(int i : even){
-            temp.next = new ListNode(i);
+        while(copy!=null){
+            temp.next = new ListNode(copy.val);
             temp = temp.next;
-        }  
+            if(copy.next==null){
+                break;
+            }
+            copy = copy.next.next;
+        }
         return ans.next;
     }
 }
