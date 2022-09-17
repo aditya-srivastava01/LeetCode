@@ -4,8 +4,8 @@ class Solution {
         int b = 0;
         char[] s = secret.toCharArray();
         char[] g = guess.toCharArray();
-        HashMap<Character,Integer> map1 = new HashMap<>();
-        HashMap<Character,Integer> map2 = new HashMap<>();
+        int[] cnt1 = new int[10];
+        int[] cnt2 = new int[10];
         int n = s.length;
         for(int i=0;i<n;i++){
             if(s[i]==g[i]){
@@ -13,14 +13,12 @@ class Solution {
                 s[i] = '-';
                 g[i] = '+';
             }else{
-                map1.put(s[i],map1.getOrDefault(s[i],0)+1);
-                map2.put(g[i],map2.getOrDefault(g[i],0)+1);
+                cnt1[s[i]-'0']++;
+                cnt2[g[i]-'0']++;
             }
         }
-        for(char c : map2.keySet()){
-            if(map1.containsKey(c)){
-                b += Math.min(map1.get(c),map2.get(c));
-            }
+        for(int i=0;i<10;i++){
+            b += Math.min(cnt1[i],cnt2[i]);
         }
         String ans = ""+a+"A"+b+"B";
         return ans;
