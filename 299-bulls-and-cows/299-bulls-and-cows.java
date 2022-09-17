@@ -10,8 +10,6 @@ class Solution {
         for(int i=0;i<n;i++){
             if(s[i]==g[i]){
                 a++;
-                s[i] = '-';
-                g[i] = '+';
             }else{
                 cnt1[s[i]-'0']++;
                 cnt2[g[i]-'0']++;
