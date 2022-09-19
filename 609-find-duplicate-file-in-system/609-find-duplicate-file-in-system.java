@@ -1,7 +1,7 @@
 class Solution {
     public List<List<String>> findDuplicate(String[] paths) {
-        List<List<String>> ans = new ArrayList<>();
         HashMap<String,List<String>> map = new HashMap<>();
+        HashMap<String,List<String>> dup = new HashMap<>();
         for(String s: paths){
             String dir[] = s.split(" ");
             String root = dir[0];
@@ -17,15 +17,11 @@ class Solution {
                     List<String> list = map.get(key);
                     String value = root+"/"+temp[0];
                     list.add(value);
-                    map.put(key,list);                    
+                    map.put(key,list);   
+                    dup.put(key,list);
                 }
             }
         }
-        for(String key : map.keySet()){
-            if(map.get(key).size()>1){
-                ans.add(map.get(key));
-            }
-        }
-        return ans;
+        return new ArrayList<>(dup.values());
     }
 }
