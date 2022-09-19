@@ -1,15 +1,13 @@
 class Solution {
     public int twoCitySchedCost(int[][] costs) {
         int n = costs.length;
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        int i=0;
         int ans = 0;
-        for(i=0;i<n;i++){
+        Arrays.sort(costs,(a,b)->(a[1]-a[0])-(b[1]-b[0]));
+        for(int i=0;i<n;i++){
             ans += costs[i][0];
-            pq.add(costs[i][1]-costs[i][0]);
-        }
-        while(i-->n/2){
-            ans += pq.poll();
+            if(i<n/2){
+                ans += (costs[i][1]-costs[i][0]);
+            }
         }
         return ans;
     }
