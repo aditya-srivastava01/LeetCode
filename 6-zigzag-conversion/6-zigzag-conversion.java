@@ -3,8 +3,8 @@ class Solution {
     int i = 0;
     int k = 0;
     int indx = k-1;
-    List<List<String>> ans = new ArrayList<>();
-    List<String> list;
+    List<StringBuilder> ans = new ArrayList<>();
+    StringBuilder sb;
     char[] s;
     public String convert(String str, int k) {
         this.s = str.toCharArray();
@@ -16,15 +16,15 @@ class Solution {
         }
         this.indx = k-1;
         for(i=0;i<k;i++){
-            list = new ArrayList<>();
-            list.add(""+s[i]);
-            ans.add(list);
+            // list = new ArrayList<>();
+            sb = new StringBuilder();
+            sb.append(s[i]);
+            ans.add(sb);
         }
-        
         solve();
         String zigzag = "";
-        for(List<String> l : ans){
-            zigzag += String.join("",l);
+        for(StringBuilder l : ans){
+            zigzag += l.toString();
         }
         return zigzag;
     }
@@ -34,12 +34,12 @@ class Solution {
         }
         while(indx>0 && i<n){
             for(int j=0;j<k;j++){
-                list = ans.get(j);
+                sb = ans.get(j);
                 if(j==indx-1){
-                    list.add(""+s[i]);
+                    sb.append(s[i]);
                     i++;
                 }
-                ans.set(j,list);
+                ans.set(j,sb);
             }
             indx--;
         }     
@@ -47,9 +47,9 @@ class Solution {
     }
     public void add(){
         for(int j=1;j<k && i<n;j++){
-            list = ans.get(j);
-            list.add(""+s[i]);
-            ans.set(j,list);
+            sb = ans.get(j);
+            sb.append(s[i]);
+            ans.set(j,sb);
             i++;
         }
         indx = k-1;
