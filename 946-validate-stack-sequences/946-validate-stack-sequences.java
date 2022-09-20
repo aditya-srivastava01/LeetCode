@@ -8,10 +8,6 @@ class Solution {
             stack.push(pushed[i]);
             i++;
         }
-        stack.push(pushed[i]);
-        stack.pop();
-        j++;
-        i++;
         while(i<n && j<n){
             int poop = popped[j];
             int puus = pushed[i];
@@ -22,7 +18,7 @@ class Solution {
                    stack.pop();
                     ++j;
                 }
-            stack.push(puus);
+                stack.push(puus);
             }
             i++;
         }
