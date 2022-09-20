@@ -3,7 +3,7 @@ class Solution {
     int i = 0;
     int k = 0;
     int indx = k-1;
-    List<StringBuilder> ans = new ArrayList<>();
+    StringBuilder[] ans;
     StringBuilder sb;
     char[] s;
     public String convert(String str, int k) {
@@ -11,6 +11,7 @@ class Solution {
         this.n = s.length;
         this.i = 0;
         this.k = k;
+        ans = new StringBuilder[k];
         if(n<k || k<2){
             return str;
         }
@@ -19,7 +20,7 @@ class Solution {
             // list = new ArrayList<>();
             sb = new StringBuilder();
             sb.append(s[i]);
-            ans.add(sb);
+            ans[i] = sb;
         }
         solve();
         String zigzag = "";
@@ -34,12 +35,12 @@ class Solution {
         }
         while(indx>0 && i<n){
             for(int j=0;j<k;j++){
-                sb = ans.get(j);
+                sb = ans[j];
                 if(j==indx-1){
                     sb.append(s[i]);
                     i++;
                 }
-                ans.set(j,sb);
+                ans[j] = sb;
             }
             indx--;
         }     
@@ -47,9 +48,9 @@ class Solution {
     }
     public void add(){
         for(int j=1;j<k && i<n;j++){
-            sb = ans.get(j);
+            sb = ans[j];
             sb.append(s[i]);
-            ans.set(j,sb);
+            ans[j] = sb;
             i++;
         }
         indx = k-1;
