@@ -1,4 +1,5 @@
 class Solution {
+    char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();
     public String shiftingLetters(String str, int[] shifts) {
         char[] s = str.toCharArray();
         int n = shifts.length;
@@ -12,12 +13,11 @@ class Solution {
             long val = shifts[i];
             shift[i] = sum-so_far;
             so_far += val;
-        }
-        char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-        for(int i=0;i<n;i++){
+            
             long indx = ((s[i]-'a')+shift[i])%26l;
             s[i] = alpha[(int)indx];
         }
+        
         return String.valueOf(s);
     }
 }
