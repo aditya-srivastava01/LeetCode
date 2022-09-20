@@ -9,25 +9,17 @@ class Solution {
             i++;
         }
         while(i<n && j<n){
-            int poop = popped[j];
-            int puus = pushed[i];
-            if(puus==poop){
-                j++;
-            }else{
-                while(!stack.isEmpty() && stack.peek()==popped[j]){
-                   stack.pop();
-                    ++j;
-                }
-                stack.push(puus);
+            while(!stack.isEmpty() && stack.peek()==popped[j]){
+               stack.pop();
+                ++j;
             }
+            stack.push(pushed[i]);
             i++;
         }
-        
         while(!stack.isEmpty() && stack.peek()==popped[j]){
             stack.pop();
             j++;
         }
-
         return stack.isEmpty();
     }
 }
