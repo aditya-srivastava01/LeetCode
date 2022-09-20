@@ -17,7 +17,6 @@ class Solution {
         }
         this.indx = k-1;
         for(i=0;i<k;i++){
-            // list = new ArrayList<>();
             sb = new StringBuilder();
             sb.append(s[i]);
             ans[i] = sb;
@@ -35,12 +34,10 @@ class Solution {
         }
         while(indx>0 && i<n){
             for(int j=0;j<k;j++){
-                sb = ans[j];
                 if(j==indx-1){
-                    sb.append(s[i]);
+                    ans[j].append(s[i]);
                     i++;
                 }
-                ans[j] = sb;
             }
             indx--;
         }     
@@ -48,9 +45,7 @@ class Solution {
     }
     public void add(){
         for(int j=1;j<k && i<n;j++){
-            sb = ans[j];
-            sb.append(s[i]);
-            ans[j] = sb;
+            ans[j].append(s[i]);
             i++;
         }
         indx = k-1;
