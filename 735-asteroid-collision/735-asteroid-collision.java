@@ -31,6 +31,9 @@ class Solution {
                 }
             }
             ast = ans;
+            if(zero==0){
+                break;
+            }
         }
         int zero = 0;
         for(int i:ast){
