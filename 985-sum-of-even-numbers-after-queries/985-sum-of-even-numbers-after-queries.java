@@ -13,25 +13,20 @@ class Solution {
             int val = q[0];
             int num = nums[indx];
             if(num%2==0){
-                // System.out.println(val+" "+indx+" "+sum);
-                if(Math.abs(val)%2==1){
-                    // System.out.println(val+" "+indx+" "+sum);
+                if((val&1)==1){
                     sum -= num;
                 }else{
                     sum += val;
                 }
             }else{
-                if(Math.abs(val)%2==1){
+                if((val&1)==1){
                     sum += (num+val);
-                }else{
-                    
                 }
             }
             nums[indx] += val;
             ans[i] = sum;
             i++;
         }
-        // Arrays.fill(ans,sum);
         return ans;
     }
 }
