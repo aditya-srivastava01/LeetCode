@@ -1,30 +1,27 @@
 class Solution {
-    char[] arr;
     public int getMinSwaps(String num, int k) {
-        this.arr = num.toCharArray();
+        char[] arr = num.toCharArray();
         int n = arr.length;
         for(int i=0;i<k;i++){
             next(arr);
         }
         char[] og = num.toCharArray();
         int i = 0, j = 0;
-        int result = 0;
+        int ans = 0;
         while (i < n){
             j = i;
             while (og[j] != arr[i]){
-                j += 1;
+                j++;
             }
             while (i < j){
-                char temp = og[j];
-                og[j] = og[j - 1];
-                og[j - 1] = temp;
+                swap(og,j,j-1);
                 j -= 1;
-                result += 1;
+                ans++;
             }
-            i += 1;
+            i++;
         }
         // System.out.println(String.valueOf(arr));
-        return result;
+        return ans;
     }
     public void next(char[] arr){
         int n = arr.length;
@@ -39,11 +36,11 @@ class Solution {
                     }
                 }
                 if(pos!=-1){
-                    swap(i-1,pos);
+                    swap(arr,i-1,pos);
                     int j = i;
                     int len = n-1;
                     while(j<len){
-                        swap(j,len);
+                        swap(arr,j,len);
                         j++;
                         len--;
                     }
@@ -53,7 +50,7 @@ class Solution {
         }
         Arrays.sort(arr);
     }
-    public void swap(int i,int j){
+    public void swap(char[] arr,int i,int j){
         char c = arr[i];
         arr[i] = arr[j];
         arr[j] = c;
