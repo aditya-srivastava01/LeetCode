@@ -1,4 +1,11 @@
 class Solution:
-    def customSortString(self, S: str, T: str) -> str:
-        d = {k : i for i, k in enumerate(S)}
-        return ''.join(sorted(T, key=lambda k: d.get(k, len(T) + ord(k))))
+    def customSortString(self, order: str, s: str) -> str:
+        cache = defaultdict(lambda:0)
+        ans = ""
+        for char in s:
+            if char not in order:
+                ans += char
+            cache[char] += 1
+        for char in order:
+            ans += char * cache[char]
+        return ans
