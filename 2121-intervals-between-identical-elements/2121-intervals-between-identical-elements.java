@@ -1,7 +1,8 @@
 class Solution {
     long[] ans;
     List<Integer> list;
-    HashMap<Integer,Long> indx_sum = new HashMap<>();
+    // HashMap<Integer,Long> indx_sum = new HashMap<>();
+    long[] indx_sum = new long[1_0_0_0_0_1];
     public long[] getDistances(int[] arr) {
         int n = arr.length;
         this.ans = new long[n];
@@ -16,7 +17,8 @@ class Solution {
                list.add(i);
                map.put(arr[i],list);
            }
-            indx_sum.put(arr[i],indx_sum.getOrDefault(arr[i],0l)+i);
+            indx_sum[arr[i]] += i;
+            // indx_sum.put(arr[i],indx_sum.getOrDefault(arr[i],0l)+i);
         }
         // System.out.println(map);
         // System.out.println(indx_sum);
@@ -27,7 +29,7 @@ class Solution {
         return ans;
     }
     public void solve(int x,List<Integer> list){
-        long sum = indx_sum.get(x);
+        long sum = indx_sum[x];
         long pre = 0l;
         int n = list.size();
         for(int i=0;i<n;i++){
